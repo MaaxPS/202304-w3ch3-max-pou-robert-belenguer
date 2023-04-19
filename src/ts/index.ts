@@ -56,4 +56,3 @@ const series: Series = [
   },
 ];
 const body = document.querySelector("body")!;
-new AppContainer(body);

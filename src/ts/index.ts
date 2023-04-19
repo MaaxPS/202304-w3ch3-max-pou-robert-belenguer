@@ -1,6 +1,6 @@
-/* eslint-disable no-new */
 import AppContainer from "./components/AppContainer/AppContainer.js";
-import { WatchedSeriesComponents } from "./components/WatchedSeriesComponent/WatchedSeriesComponent.js";
+import { CardComponent } from "./components/CardComponent/CardComponent.js";
+import { PendingSeriesComponent } from "./components/PendingSeriesComponent/PendingSeriesComponent.js";
 import { type Series } from "./types/types";
 
 const series: Series = [
@@ -12,7 +12,7 @@ const series: Series = [
     poster:
       "https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
     isWatched: true,
-    score: 5,
+    score: 3,
     emmies: 21,
   },
   {
@@ -46,15 +46,17 @@ const series: Series = [
     score: 5,
     emmies: 53,
   },
-  {
-    id: 5,
-    name: "Atypical",
-    creator: "Robia Rashid",
-    year: 2017,
-    poster: "https://www.cine.com/media/series/2711.jpg",
-    isWatched: false,
-    score: 0,
-    emmies: 0,
-  },
 ];
 const body = document.querySelector("body")!;
+
+new AppContainer(body);
+
+const appContainer = document.querySelector(".main-content")!;
+
+new PendingSeriesComponent(appContainer);
+
+const pendingContainer = document.querySelector(".series")!;
+
+series.forEach((serie) => {
+  new CardComponent(pendingContainer, serie);
+});

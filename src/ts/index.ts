@@ -1,3 +1,4 @@
+import AppContainer from "./components/AppContainer/AppContainer.js";
 import { type Series } from "./types/types";
 
 const series: Series = [
@@ -54,5 +55,5 @@ const series: Series = [
     emmies: 0,
   },
 ];
-
-export default series;
+const body = document.querySelector("body")!;
+new AppContainer(body);

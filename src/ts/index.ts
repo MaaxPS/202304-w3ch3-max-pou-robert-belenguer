@@ -63,7 +63,7 @@ new WatchedSeriesComponents(appContainer);
 const pendingContainer = document.querySelector(".series.pending")!;
 const watchedContainer = document.querySelector(".series.watched")!;
 
-const myfucnion = () => {
+const createWatchedAndPendingSeries = () => {
   const seriesIsWatched: SeriesStructure[] = [];
   series.forEach((serie) => {
     if (!serie.isWatched) {
@@ -87,4 +87,4 @@ const myfucnion = () => {
   });
 };
 
-myfucnion();
+createWatchedAndPendingSeries();

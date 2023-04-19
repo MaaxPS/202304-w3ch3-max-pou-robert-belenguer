@@ -1,6 +1,8 @@
 import AppContainer from "./components/AppContainer/AppContainer.js";
 import { CardComponent } from "./components/CardComponent/CardComponent.js";
 import { PendingSeriesComponent } from "./components/PendingSeriesComponent/PendingSeriesComponent.js";
+import { WatchedSeriesComponents } from "./components/WatchedSeriesComponent/WatchedSeriesComponent.js";
+import { type SeriesStructure } from "./types/types";
 import { type Series } from "./types/types";
 
 const series: Series = [
@@ -11,7 +13,7 @@ const series: Series = [
     year: 1999,
     poster:
       "https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
-    isWatched: true,
+    isWatched: false,
     score: 3,
     emmies: 21,
   },
@@ -47,6 +49,7 @@ const series: Series = [
     emmies: 53,
   },
 ];
+
 const body = document.querySelector("body")!;
 
 new AppContainer(body);
@@ -55,8 +58,33 @@ const appContainer = document.querySelector(".main-content")!;
 
 new PendingSeriesComponent(appContainer);
 
-const pendingContainer = document.querySelector(".series")!;
+new WatchedSeriesComponents(appContainer);
 
-series.forEach((serie) => {
-  new CardComponent(pendingContainer, serie);
-});
+const pendingContainer = document.querySelector(".series.pending")!;
+const watchedContainer = document.querySelector(".series.watched")!;
+
+const myfucnion = () => {
+  const seriesIsWatched: SeriesStructure[] = [];
+  series.forEach((serie) => {
+    if (!serie.isWatched) {
+      seriesIsWatched.push(serie);
+    }
+  });
+
+  const seriesIsPending: SeriesStructure[] = [];
+  series.forEach((serie) => {
+    if (serie.isWatched) {
+      seriesIsPending.push(serie);
+    }
+  });
+
+  seriesIsPending.forEach((serie) => {
+    new CardComponent(pendingContainer, serie);
+  });
+
+  seriesIsWatched.forEach((serie) => {
+    new CardComponent(watchedContainer, serie);
+  });
+};
+
+myfucnion();

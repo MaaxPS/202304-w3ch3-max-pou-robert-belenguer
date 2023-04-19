@@ -1,6 +1,4 @@
-import { type Series } from "./types/types";
-
-const series: Series = [
+const series = [
   {
     id: 1,
     name: "The Sopranos",
@@ -54,5 +52,5 @@ const series: Series = [
     emmies: 0,
   },
 ];
-
 export default series;
+// # sourceMappingURL=index.js.map

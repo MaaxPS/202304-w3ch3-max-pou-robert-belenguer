@@ -1,4 +1,6 @@
+/* eslint-disable no-new */
 import AppContainer from "./components/AppContainer/AppContainer.js";
+import { WatchedSeriesComponents } from "./components/WatchedSeriesComponent/WatchedSeriesComponent.js";
 import { type Series } from "./types/types";
 
 const series: Series = [

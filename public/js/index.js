@@ -1,4 +1,6 @@
+/* eslint-disable no-new */
 import AppContainer from "./components/AppContainer/AppContainer.js";
+import { WatchedSeriesComponents } from "./components/WatchedSeriesComponent/WatchedSeriesComponent.js";
 const series = [
     {
         id: 1,
@@ -53,4 +55,6 @@ const series = [
 ];
 const body = document.querySelector("body");
 new AppContainer(body);
+const mainContent = document.querySelector(".main-content");
+new WatchedSeriesComponents(mainContent);
 //# sourceMappingURL=index.js.map

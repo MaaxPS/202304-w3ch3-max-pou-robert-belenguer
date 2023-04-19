@@ -12,6 +12,9 @@ module.exports = {
           "error",
           "interface",
         ],
+        "no-unused-vars": "error",
+
+        "no-new": 0,
       },
       files: ["*.ts", "*.tsx"],
     },

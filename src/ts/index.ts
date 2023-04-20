@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-loop-func */
 import AppContainer from "./components/AppContainer/AppContainer.js";
 import { CardComponent } from "./components/CardComponent/CardComponent.js";
 import { PendingSeriesComponent } from "./components/PendingSeriesComponent/PendingSeriesComponent.js";
 import { WatchedSeriesComponents } from "./components/WatchedSeriesComponent/WatchedSeriesComponent.js";
+import { moveSerie } from "./functions/moveSerie/moveSerie.js";
 import { type SeriesStructure } from "./types/types";
 import { type Series } from "./types/types";
 
@@ -13,7 +15,7 @@ const series: Series = [
     year: 1999,
     poster:
       "https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
-    isWatched: true,
+    isWatched: false,
     score: 5,
     emmies: 21,
   },
@@ -34,17 +36,17 @@ const series: Series = [
     creator: "Matthew Weiner",
     year: 2007,
     poster: "https://es.web.img3.acsta.net/pictures/21/02/10/20/02/0834301.jpg",
-    isWatched: true,
+    isWatched: false,
     score: 5,
     emmies: 116,
   },
   {
     id: 4,
-    name: "6 feet under",
+    name: "Six feet under",
     creator: "Alan Ball",
     year: 2001,
     poster: "https://www.cine.com/media/series/2711.jpg",
-    isWatched: true,
+    isWatched: false,
     score: 5,
     emmies: 53,
   },
@@ -55,3 +57,40 @@ new AppContainer(body);
 const appContainer = document.querySelector(".main-content")!;
 
 new PendingSeriesComponent(appContainer, series);
+new WatchedSeriesComponents(appContainer, series);
+
+let pendingSeries = appContainer.querySelector(".list.pending")!;
+let watchedSeries = appContainer.querySelector(".list.watched");
+
+const letters = ["a", "b", "c", "d", "e"];
+
+let registerButtons = () => {};
+
+series.forEach((serie) => {
+  const name = serie.name.split(" ").join("");
+  for (let index = 0; index < 5; index++) {
+    const star = pendingSeries.querySelector(`.${name}.${letters[index]}`);
+    star?.addEventListener("click", () => {
+      registerButtons();
+    });
+  }
+});
+
+registerButtons = () => {
+  series.forEach((serie) => {
+    const name = serie.name.split(" ").join("");
+    for (let index = 0; index < 5; index++) {
+      const star = pendingSeries.querySelector(`.${name}.${letters[index]}`);
+      star?.addEventListener("click", () => {
+        moveSerie(serie, name, index);
+        pendingSeries.remove();
+        watchedSeries?.remove();
+        new PendingSeriesComponent(appContainer, series);
+        new WatchedSeriesComponents(appContainer, series);
+        pendingSeries = appContainer.querySelector(".list.pending")!;
+        watchedSeries = appContainer.querySelector(".list.watched");
+        registerButtons();
+      });
+    }
+  });
+};

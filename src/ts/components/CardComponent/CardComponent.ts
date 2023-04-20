@@ -11,20 +11,25 @@ export class CardComponent extends Component {
 
   getStars() {
     let stars = "";
+    const letters = ["a", "b", "c", "d", "e"];
 
     if (!this.serieData.isWatched) {
       for (let i = 0; i < this.serieData.score; i++) {
-        stars += `<li class="score__star"><button><i class="icon icon--score far fa-star" title="${
+        stars += `<li class="score__star"><button class="${this.serieData.name
+          .split(" ")
+          .join("")} ${letters[i]}"><i class="icon icon--score far fa-star ${
           i + 1
-        }/5"></i></button></li>`;
+        }" title="${i + 1}/5"></i></button></li>`;
       }
     }
 
     if (this.serieData.isWatched) {
       for (let i = 0; i < this.serieData.score; i++) {
-        stars += `<li class="score__star"><button><i class="icon icon--score far fa-star" title="${
+        stars += `<li class="score__star"><button class="${this.serieData.name
+          .split(" ")
+          .join("")} ${letters[i]}"><i class="icon icon--score far fa-star ${
           i + 1
-        }/5"></i></button></li>`;
+        }" title="${i + 1}/5"></i></button></li>`;
       }
     }
 

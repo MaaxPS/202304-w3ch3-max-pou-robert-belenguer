@@ -5,7 +5,7 @@ export interface SeriesStructure {
   year: number;
   poster: string;
   isWatched: boolean;
-  score: 0 | 1 | 2 | 3 | 4 | 5;
+  score: number;
   emmies: number;
 }
 

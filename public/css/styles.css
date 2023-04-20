@@ -112,3 +112,6 @@ img {
   display: inline-block;
   vertical-align: middle;
 }
+button {
+  cursor: pointer;
+}

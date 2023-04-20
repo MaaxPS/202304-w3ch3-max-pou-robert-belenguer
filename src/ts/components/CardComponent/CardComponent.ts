@@ -11,10 +11,21 @@ export class CardComponent extends Component {
 
   getStars() {
     let stars = "";
-    for (let i = 0; i < this.serieData.score; i++) {
-      stars += `<li class="score__star"><button><i class="icon icon--score far fa-star" title="${
-        i + 1
-      }/5"></i></button></li>`;
+
+    if (!this.serieData.isWatched) {
+      for (let i = 0; i < this.serieData.score; i++) {
+        stars += `<li class="score__star"><button><i class="icon icon--score far fa-star" title="${
+          i + 1
+        }/5"></i></button></li>`;
+      }
+    }
+
+    if (this.serieData.isWatched) {
+      for (let i = 0; i < this.serieData.score; i++) {
+        stars += `<li class="score__star"><button><i class="icon icon--score far fa-star" title="${
+          i + 1
+        }/5"></i></button></li>`;
+      }
     }
 
     return stars;

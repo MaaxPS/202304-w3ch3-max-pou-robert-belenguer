@@ -64,19 +64,7 @@ let watchedSeries = appContainer.querySelector(".list.watched");
 
 const letters = ["a", "b", "c", "d", "e"];
 
-let registerButtons = () => {};
-
-series.forEach((serie) => {
-  const name = serie.name.split(" ").join("");
-  for (let index = 0; index < 5; index++) {
-    const star = pendingSeries.querySelector(`.${name}.${letters[index]}`);
-    star?.addEventListener("click", () => {
-      registerButtons();
-    });
-  }
-});
-
-registerButtons = () => {
+const registerButtons = () => {
   series.forEach((serie) => {
     const name = serie.name.split(" ").join("");
     for (let index = 0; index < 5; index++) {
@@ -94,3 +82,5 @@ registerButtons = () => {
     }
   });
 };
+
+registerButtons();

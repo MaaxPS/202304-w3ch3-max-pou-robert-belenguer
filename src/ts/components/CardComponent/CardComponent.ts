@@ -27,7 +27,7 @@ export class CardComponent extends Component {
       for (let i = 0; i < this.serieData.score; i++) {
         stars += `<li class="score__star"><button class="${this.serieData.name
           .split(" ")
-          .join("")} ${letters[i]}"><i class="icon icon--score far fa-star ${
+          .join("")} ${letters[i]}"><i class="icon-score fas fa-star ${
           i + 1
         }" title="${i + 1}/5"></i></button></li>`;
       }

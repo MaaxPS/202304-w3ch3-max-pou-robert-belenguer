@@ -13,8 +13,8 @@ const series: Series = [
     year: 1999,
     poster:
       "https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
-    isWatched: false,
-    score: 3,
+    isWatched: true,
+    score: 5,
     emmies: 21,
   },
   {
@@ -25,7 +25,7 @@ const series: Series = [
     poster:
       "https://t1.pixers.pics/img-1fb6f67c/posters-game-of-thrones.jpg?H4sIAAAAAAAAA3VOW27EIAy8DpGS2BAIkBvs394gIjy2afNAQNtVT1_Sqp-VZXs80ngG3o9sggfrj-IT7Ktzm4ewbvXKU_J5_fJkUGOLzVTZjSBWdH74ZNMZSUcH1VLRCsbaUYpm-jRVuJv0Rl5KiXkCyEMf12f9VpfNYPcMDKkEVCC00lpYzh1aN8cuF3M4k1zH8TliH49Hi1c1f0EkYiuvACWtO6mJzupVyGt8NPCP3y-GqoL7DSgCsp-JwNnFzvcbRWS1kbNZuEELHox0izdBeoUYLBVej9qZEMIsFmmWRY7Kec_n_hu83S9APwEAAA==",
     isWatched: false,
-    score: 0,
+    score: 5,
     emmies: 164,
   },
   {
@@ -51,40 +51,7 @@ const series: Series = [
 ];
 
 const body = document.querySelector("body")!;
-
 new AppContainer(body);
-
 const appContainer = document.querySelector(".main-content")!;
 
-new PendingSeriesComponent(appContainer);
-
-new WatchedSeriesComponents(appContainer);
-
-const pendingContainer = document.querySelector(".series.pending")!;
-const watchedContainer = document.querySelector(".series.watched")!;
-
-const createWatchedAndPendingSeries = () => {
-  const seriesIsWatched: SeriesStructure[] = [];
-  series.forEach((serie) => {
-    if (!serie.isWatched) {
-      seriesIsWatched.push(serie);
-    }
-  });
-
-  const seriesIsPending: SeriesStructure[] = [];
-  series.forEach((serie) => {
-    if (serie.isWatched) {
-      seriesIsPending.push(serie);
-    }
-  });
-
-  seriesIsPending.forEach((serie) => {
-    new CardComponent(pendingContainer, serie);
-  });
-
-  seriesIsWatched.forEach((serie) => {
-    new CardComponent(watchedContainer, serie);
-  });
-};
-
-createWatchedAndPendingSeries();
+new PendingSeriesComponent(appContainer, series);
